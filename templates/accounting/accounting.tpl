@@ -5,10 +5,17 @@
 
 
 <form method="post" name="search1" action="index.php?route=accounting/accounting&view=<?php echo $view; ?>" class="form-inline pull-right">
-    <div class="input-append">
-        <input type="text" name="search" class="input-medium" value="<?php print $search; ?>" />
-        <input type="submit" class="btn" value="<?php print $text_search; ?>" />
+    <div class="field has-addons ">
+    <div class="control has-icons-left">
+        <input type="text" name="search" class="input is-medium" value="<?php print $search; ?>" />
+        <span class="icon is-medium is-left">
+            <i class="fa fa-search"></i>
+          </span>
+          </div>
+        <input type="submit" class="button is-primary is-medium" value="<?php print $text_search; ?>" />
+
     </div>
+</div>
 </form>
 
 <p>

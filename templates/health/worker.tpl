@@ -40,7 +40,7 @@
     <div class="columns is-multiline">
 
           <div class="column">
-            <div class="box notification is-warning is-large">
+            <div class="box notification is-warning">
               <div class="heading"><?php print $text_cumulative_counts; ?></div>
               <div class="title is-5"><?php print $processed_emails['last_30_days_count']; ?></div>
               <div class="level">
@@ -97,6 +97,7 @@
                    <?php } ?></div>
                   </div>
                 </div>
+                <div class="level-item"></div>
                 <div class="level-item">
                   <div class="">
                     <div class="heading"><?php print $text_periodic_purge; ?></div>
