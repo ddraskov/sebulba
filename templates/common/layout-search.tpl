@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print DEFAULT_LANG; ?>" lang="<?php print DEFAULT_LANG; ?>">
+<html class="has-navbar-fixed-top" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print DEFAULT_LANG; ?>" lang="<?php print DEFAULT_LANG; ?>">
 
 <head>
    <title><?php print $title; ?></title>
@@ -14,6 +14,8 @@
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
    <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma.css">
+   <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-extensions.min.css">
+   
 
   
 
@@ -51,7 +53,7 @@
     <input type="text" id="restore_address" name="restore_address" />
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><?php print $text_close; ?></a>
+    <a href="#" class="button" data-dismiss="modal" aria-hidden="true"><?php print $text_close; ?></a>
     <a href="#" onclick="var addr =  $('#restore_address').val(); if(addr) { Piler.bulk_restore_messages('<?php print $text_restored; ?>', addr); }" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</a>
   </div>
 </div>
@@ -64,34 +66,55 @@
 
     <div id="messagebox1" class="alert alert-info lead"></div>
 
-    <div id="piler1" class="container-fluid">
+    <div id="piler1" class="container is-fluid">
+     <div class="hero is-small" ></div>
+    <nav class="navbar is-transparent is-fullwidth">
 
-    <div id="searchcontainer">
+    <div id="searchcontainer" class="navbar-menu">
+      <div class="navbar-start">
          <input type="hidden" name="searchtype" id="searchtype" value="expert" />
          <input type="hidden" name="sort" id="sort" value="date" />
          <input type="hidden" name="order" id="order" value="0" />
          <input type="hidden" name="ref" id="ref" value="" />
          <input type="hidden" name="prefix" id="prefix" value="" />
 
-         <div class="control-group">
-            <div class="controls row-fluid">
-                <div id="input-span" class="span6">
-                    <label for="_search"><?php print $text_search; ?></label>
-                <input type="text" id="_search" name="_search" placeholder="<?php print $text_enter_search_terms; ?>" <?php if(ENABLE_DELETE == 1) { ?>style="background: #faafbe;"<?php } ?> />
-                </div>
-                <div class="span6 input-append btn-group">
-                    <button id="button_search" class="btn btn-large btn-danger" onclick="Piler.expert(this); return false;"><i class="icon-search icon-large"></i>&nbsp;<?php print $text_search; ?></button>
-                    <button id="button_expert" class="btn btn-large btn-inverse" onclick="$('#searchpopup1').show();"><?php print $text_advanced_search; ?> &nbsp;<span class="caret"></span></button>
-                    <button id="button_options" class="btn btn-large btn-inverse dropdown-toggle" data-toggle="dropdown"><?php print $text_options; ?> &nbsp;<span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" onclick="Piler.saved_search_terms('<?php print $text_saved; ?>');"><?php print $text_save; ?></a></li>
-                        <li><a href="#" onclick="Piler.load_saved_search_terms();"><?php print $text_load; ?></a></li>
-                    </ul>
-                </div>
-              </div>
-            </div>
+         <div class="field has-addons ">
+          <div class="control has-icons-left">
+          <input class="input is-medium" type="text" id="_search" name="_search" placeholder="<?php print $text_enter_search_terms; ?>" <?php if(ENABLE_DELETE == 1) { ?>style="background: #faafbe;"<?php } ?> />
+          <span class="icon is-medium is-left">
+              <i class="fa fa-search"></i>
+            </span>
+        </div>      
+        <div class="control">
+            <button id="button_search" class="button is-primary is-medium" onclick="Piler.expert(this); return false;"><?php print $text_search; ?></button>
+        </div>
+      </div>  
+    
          </div>
+       <div class="navbar-end">
+         
+          <button id="button_expert" class="button is-danger is-medium" onclick="$('#searchpopup1').show();"><?php print $text_advanced_search; ?> &nbsp;<span class="caret"></span></button>
+      
+         <div class="button is-notification is-medium navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link is-medium">
+                <?php print $text_options; ?>
+            </div>
+            <div id="adminDropdown" class="navbar-dropdown ">  
+                <a class="navbar-item is-medium" href="#" onclick="Piler.saved_search_terms('<?php print $text_saved; ?>');"><?php print $text_save; ?></a>
+                <a class="navbar-item is-medium" href="#" onclick="Piler.load_saved_search_terms();"><?php print $text_load; ?></a>
+             </div> </div>  
+            </div>
+                    
+                   
+                  
+
+               
+          
+          
+
     </div>
+
+    </nav>
     <?php print $popup; ?>
     <div id="mainscreen">
         <div id="mailleftcontainer">
@@ -136,6 +159,7 @@
     </script>
 
 <?php if(TRACKING_CODE) { print TRACKING_CODE; } ?>
+
 
 </body>
 </html>

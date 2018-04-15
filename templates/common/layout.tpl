@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma.css">
+    <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-extensions.min.css">
    
     
   

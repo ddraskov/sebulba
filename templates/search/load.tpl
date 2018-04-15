@@ -1,9 +1,9 @@
-<div id="messagelistcontainer" class="boxlistcontent" style="top:0">
+<div id="messagelistcontainer" class="container is-fluid" style="top:0">
 
    <div id="results">
          
 <?php if(count($terms) > 0){ ?>
-        <table class="table table-striped">
+        <table class="table is-narrow is-striped is-fullwidth">
             <thead><tr><th>Query Name</th><th>&nbsp;</th></thead>
 <?php foreach($terms as $term) {
          parse_str($term['term'], $s);

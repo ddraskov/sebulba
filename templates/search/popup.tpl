@@ -1,4 +1,4 @@
-   <div id="searchpopup1" class="container">
+   <div id="searchpopup1" class="modal container">
 
         <input type="hidden" name="xsearchtype" id="xsearchtype" value="simple" />
 

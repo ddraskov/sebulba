@@ -1,31 +1,27 @@
 <?php if(Registry::get('username')) { ?>
-<navbar class="navbar ">
+<nav class="navbar is-fixed-top">
+
     <div class="navbar-brand">
       <a class="navbar-item" href="https://binarium.space">
         <img src="../view/theme/sebulba/images/binarium.png" alt="MailArhiver Haldasar" width="102" height="22">
       </a>
   
-      <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-        <span class="icon" style="color: #333;">
-          <i class="fa fa-github"></i>
-        </span>
-      </a>
-  
-      <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
-        <span class="icon" style="color: #55acee;">
-          <i class="fa fa-twitter"></i>
-        </span>
-      </a>
   
       <div class="navbar-burger burger" data-target="navMenubd-example">
         <span></span>
         <span></span>
         <span></span>
       </div>
-    </div>
- <?php if($admin_user == 1) { ?>
-    <div id="navMenubd-example" class="navbar-menu">
-      <div class="navbar-start">
+
+    </div> 
+  
+    <?php if($admin_user == 1) { ?>
+    <div id="Navigation" class="navbar-menu"> 
+      
+      <div class="navbar-start"> 
+
+   <!-- Start od  first menu -->
+
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link  is-active">
             Monitor
@@ -104,6 +100,11 @@
           </div>
         </div>
 
+<!-- End of first menu option -->
+
+
+<!--      Begin of second  menu option                     -->
+
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">
             Administration
@@ -129,6 +130,7 @@
                 <strong><?php print $text_domain; ?></strong>
                 </a>
 <?php if(ENABLE_SAAS == 1) { ?>
+
                  <a class="navbar-item " href="index.php?route=ldap/list">
                       <span class="icon">
                           <i class="fas fa-co"></i>
@@ -174,7 +176,8 @@
                                </span>
                             <strong><?php print $text_legal_hold; ?></strong>
                             </a>
-            <hr class="navbar-divider ">                
+            <hr class="navbar-divider "> 
+
             <a class="navbar-item " href="index.php?route=search/autosearch">
               <div class="level is-mobile">
                 <div class="level-left">
@@ -195,44 +198,51 @@
                 </div>
               </div>
             </a>
+          </div>
+           
             <?php if(LDAP_ADMIN_MEMBER_DN || ADMIN_CAN_POWER_SEARCH) { ?>
+              <hr class="navbar-divider "> 
               <a class="navbar-item " href="search.php">
                   <i class="fas fa-search"></i>&nbsp;<?php print $text_search; ?>
                 </a>
+              
             <?php } ?>
+          </div>    
+        </div> 
 
-            <?php } else { ?>
-   <!--search menu -->           
-         <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link is-active " href="search.php" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>><i class="fas fa-search"></i>&nbsp;<?php print $text_search; ?></a>
-              </div>
-              <?php if(ENABLE_AUDIT == 1 && $auditor_user == 1) { ?>  
-              <a class="navbar-item " href="index.php?route=audit/audit" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>><i class="fas fa-book"></i>&nbsp;<?php print $text_audit; ?></a>
+      
+        <?php } else { ?>
+
+ <!-- ############  Begin of Search menu only visible auditor  search menu -->      
+
+        
+              <a class="navbar-link " href="search.php" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>><i class="fas fa-search">
+
+                </i>&nbsp;<?php print $text_search; ?>
+              </a>
+        
+              <?php if(ENABLE_AUDIT == 1 && $auditor_user == 1) { ?> 
+
+              <a class="navbar-item " href="index.php?route=audit/audit" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>>
+                <i class="fas fa-book"></i>&nbsp;<?php print $text_audit; ?>
+              </a>
               <?php } ?>
+
               <?php if($settings['support_link']) { ?>
                 <a class="navbar-item " href="<?php print $settings['support_link']; ?>" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>><?php print $text_contact_support; ?></a>  
               <?php } ?>
+
               <?php if(ENABLE_FOLDER_RESTRICTIONS == 1) { ?>  
                 <a class="navbar-item " href="/folders.php" <?php if($settings['text_colour']) { ?> style="color: <?php print $settings['text_colour']; ?>;"<?php } ?>><i class="fas fa-folder-close"></i>&nbsp;<?php print $text_folders; ?></a> 
               <?php } ?>
+           
            <?php } ?>
-
-           <?php if($settings['branding_url']) { ?>
-           <?php } ?>
-           <?php if($settings['support_link']) { ?>
-          <?php } ?>   
-          
-          </div>
-       
-        </div> <!-- Administracijski navbar  -->
-
-      </div>   <!-- Navbar start -->
-
-
-
-      <!-- -------------------------------------- Meni desno logout ---------------------------------------------------------------------- -->  
+                  
+ <!--/div>   <!-- Navbar start -->
+  
   <div class="navbar-end">
-      <div class="navbar-item has-dropdown is-hoverable">
+      
+      <div class="navbar-item has-dropdown is-hoverable is-right">
           <div class="navbar-link">
             <span class="icon">
            <i class="fas fa-user"></i>
@@ -241,10 +251,12 @@
           </div>
 
           <div class="navbar-dropdown is-right"> 
- <?php if($settings['support_link']) { ?>
-                <a class"navbar-item" href="<?php print $settings['support_link']; ?>" target="_blank"><i class="icon-question-sign"></i>&nbsp;<?php print $text_contact_support; ?></a>
+          <?php if($settings['support_link']) { ?>
+                <a class"navbar-item" href="<?php print $settings['support_link']; ?>" target="_blank">
+                  <i class="fas fa-question"></i>&nbsp;<?php print $text_contact_support; ?>
+                </a>
         
-<?php } ?>
+          <?php } ?>
         
             <a class="navbar-item " href="settings.php">
                 <span class="icon">
@@ -262,27 +274,17 @@
    
           </div>
         </div>
-  
-      </div>
-  <!-- -------------------------------------- Meni desno---------------------------------------------------------------------- -->
-
-        <!--a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
-          <span class="icon" style="color: #333;">
-            <i class="fab fa-github"></i>
-          </span>
-        </a>
-        <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
-          <span class="icon" style="color: #55acee;">
-            <i class="fab fa-twitter"></i>
-          </span>
-        </a-->
-
-        
- 
       </div>
 
-    </div>
+
+
+
 
   
-  <?php } ?>
+
+
+</div> <!-- navbar menu class -->
+
 </nav>
+
+<?php } ?>
