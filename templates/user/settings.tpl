@@ -46,14 +46,28 @@
 <?php } ?>
 	 
    </table>
-   
-<form action="/settings.php" method="post" name="setpagelen" class="form-horizontal">
-   
-	<h4><?php print $text_display_settings; ?></h4>
 
-    <div class="control-group">
-        <label class="control-label" for="pagelen"><?php print $text_page_length; ?></label>
-        <div class="controls">
+<div class="columns is-multiline">
+
+<div class="column is-6">
+<div class="card-wrapper">
+<div class="card">
+
+<form action="/settings.php" method="post" name="setpagelen" class="form-horizontal">
+<header class="card-header">
+   <p class="card-header-title is-danger"><?php print $text_display_settings; ?></p>
+       <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </a>
+</header>
+   
+<div class="card-content">
+
+    <div class="field">
+        <label class="label" for="pagelen"><?php print $text_page_length; ?></label>
+        <div class="select is-medium">
            <select name="pagelen">
            <?php foreach(Registry::get('paging') as $t) { ?>
               <option value="<?php print $t; ?>"<?php if($page_len == $t) { ?> selected="selected"<?php } ?>><?php print $t; ?></option>
@@ -61,9 +75,9 @@
            </select>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="theme"><?php print $text_theme; ?></label>
-        <div class="controls">
+    <div class="field">
+        <label class="label" for="theme"><?php print $text_theme; ?></label>
+        <div class="select is-medium">
                <select name="theme">
             <?php foreach(Registry::get('themes') as $t) { ?>
                   <option value="<?php print $t; ?>"<?php if($theme == $t) { ?> selected="selected"<?php } ?>><?php print $t; ?></option>
@@ -71,9 +85,9 @@
                </select>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="theme"><?php print $text_language; ?></label>
-        <div class="controls">
+    <div class="field">
+        <label class="label" for="theme"><?php print $text_language; ?></label>
+        <div class="select is-medium">
                <select name="lang">
                   <option value=""><?php print $text_use_browser_settings; ?></option>
             <?php foreach(Registry::get('langs') as $t) { ?>
@@ -82,37 +96,67 @@
                </select>
         </div>
     </div>
+   </div>
 
+<footer class="card-footer">
 
-    <div class="control-group">
-        <div class="controls">
-            <input type="submit" value="<?php print $text_set; ?>" class="btn btn-primary" /> <input type="reset" value="<?php print $text_cancel; ?>" class="btn btn" onclick="Piler.go_to_default_page();" />
-        </div>
-    </div>
-    
+<input type="submit" value="<?php print $text_set; ?>" class="card-footer-item button is-primary is-medium" /> 
+<input type="reset" value="<?php print $text_cancel; ?>" class="card-footer-item button is-danger is-medium" onclick="Piler.go_to_default_page();" />
+        
+  
+  </footer>  
 </form>
 
+</div>
+</div>
+</div> <!-- Column -->
+
+<div class="column is-4">
 <?php if(ENABLE_GOOGLE_AUTHENTICATOR == 1) { ?>
+<div class="card-wrapper">
+<div class="card">
+<form method="post" name="setqr" class="form">
 
-<form method="post" name="setqr" class="form-horizontal">
-
-   <h4><?php print $text_google_authenticator_settings; ?></h4>
-
-    <div class="control-group">
-        <label class="control-label" for="ga_enabled"><?php print $text_enable; ?></label>
-        <div class="controls">
-           <input type="checkbox" name="ga_enabled" id="ga_enabled" onclick="Piler.toggle_ga();" <?php if($ga['ga_enabled'] == 1) { ?>checked="checked"<?php } ?> />
-        </div>
+<header class="card-header">
+   <p class="card-header-title is-danger"><?php print $text_google_authenticator_settings; ?></p>
+       <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </a>
+</header>
+<div class="card-content">
+    <div class="field">
+                
+           <input class="is-checkradio"type="checkbox" name="ga_enabled" id="ga_enabled" onclick="Piler.toggle_ga();" <?php if($ga['ga_enabled'] == 1) { ?>checked="checked"<?php } ?> />
+        <label class="label" for="ga_enabled"><?php print $text_enable; ?></label>
+        
     </div>
+     <div class="field">
+        <label class="label" for="ga_secret"><?php print $text_qr_code; ?></label>
+        <div id="QR" class="control">
+       
+           <?php print $ga['ga_secret']; ?> <br /><img src="qr.php?ts=<?php print time(); ?>" />
 
-    <div class="control-group">
-        <label class="control-label" for="ga_secret"><?php print $text_qr_code; ?></label>
-        <div id="QR" class="controls">
-           <?php print $ga['ga_secret']; ?> <a href="#" onclick="Piler.new_qr(); return false;"> <?php print $text_refresh_qr_code; ?></a><br /><img src="qr.php?ts=<?php print time(); ?>" />
+   
         </div>
+
     </div>
+    </div>
+  
+
+        <footer class="card-footer">
+        <a class="card-footer-item button is-primary is-medium" href="#" onclick="Piler.new_qr(); return false;"> <?php print $text_refresh_qr_code; ?></a>
+        </footer>
+   </div>
+
 
 </form>
+</div>
+</div>
+</div>
+</div>
+
 
 <?php } ?>
 

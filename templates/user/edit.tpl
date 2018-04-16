@@ -24,20 +24,21 @@
 <?php if(isset($x)){ ?>
 
 <div class="alert alert-success"><?php print $x; ?>.</div>
-<p><a href="index.php?route=user/list"><i class="icon-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a></p>
+<p><a class="button is-primary is-medium" href="index.php?route=user/list"><i class="fas fa-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a></p>
 
 <?php } elseif(isset($user)) { ?>
 
-<p><a href="index.php?route=user/list"><i class="icon-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a> | <a href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" class="confirm-delete" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove_this_user; ?></a></p>
+<p><a class="button is-medium is-primary is-warnning" href="index.php?route=user/list"><i class="icon-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a> | <a href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" class="confirm-delete" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove_this_user; ?></a></p>
 
-
-
-    <form action="index.php?route=user/edit" name="edituser" method="post" autocomplete="off" class="form-horizontal">
-      
       <div class="columns is-multiline">
 
           <div class="column is-8">
-         
+
+    <form action="index.php?route=user/edit" name="edituser" method="post" autocomplete="off" class="form-horizontal">
+      
+
+
+     <div class="">    
 
      <div class="control-group<?php if(isset($errors['email'])){ print " error"; } ?>">
         <input type="hidden" name="uid" value="<?php print $uid; ?>" />
@@ -166,6 +167,7 @@
             <input type="submit" value="<?php print $text_modify; ?>" class="button is-primary" /> <a href="index.php?route=user/list" class="button is-secondary"><?php print $text_cancel; ?></a>
         </div>
       </div>
+    </div>
     </div>
     </div>
     </form>
