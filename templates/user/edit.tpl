@@ -28,7 +28,7 @@
 
 <?php } elseif(isset($user)) { ?>
 
-<p><a class="button is-medium is-primary is-warnning" href="index.php?route=user/list"><i class="icon-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a> | <a href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" class="confirm-delete" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove_this_user; ?></a></p>
+<p><a class="button is-medium is-primary is-warnning" href="index.php?route=user/list"><i class="fas fa-circle-arrow-left"></i>&nbsp;<?php print $text_back; ?></a> | <a href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" class="button is-danger is-medium" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove_this_user; ?></a></p>
 
       <div class="columns is-multiline">
 

@@ -1,9 +1,10 @@
 
 <?php if(!isset($x)){ ?>
 <div class="container is-fullhd">
+    <div class="card-header-subtitle">
 	<h4><?php print $text_access_settings; ?></h4>
     <p><em><?php print $text_access_setting_explanation; ?></em></p>
-    
+</div>   
     <table class="table is-striped">
 	 <tr>
 		<td class="span2"><?php print $text_email_addresses; ?>:</td>
@@ -96,15 +97,21 @@
                </select>
         </div>
     </div>
+    <div class="field">
+          
+               <input type="submit" value="<?php print $text_set; ?>" class="button is-medium is-primary" /> 
+               <input type="reset" value="<?php print $text_cancel; ?>" class="button is-medium" onclick="Piler.go_to_default_page();" />
+         
+        </div>
+
    </div>
 
-<footer class="card-footer">
 
-<input type="submit" value="<?php print $text_set; ?>" class="card-footer-item button is-primary is-medium" /> 
-<input type="reset" value="<?php print $text_cancel; ?>" class="card-footer-item button is-danger is-medium" onclick="Piler.go_to_default_page();" />
+
+
+
         
-  
-  </footer>  
+ 
 </form>
 
 </div>
@@ -118,7 +125,7 @@
 <form method="post" name="setqr" class="form">
 
 <header class="card-header">
-   <p class="card-header-title is-danger"><?php print $text_google_authenticator_settings; ?></p>
+   <p class="card-header-title"><?php print $text_google_authenticator_settings; ?></p>
        <a href="#" class="card-header-icon" aria-label="more options">
       <span class="icon">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -127,27 +134,28 @@
 </header>
 <div class="card-content">
     <div class="field">
-                
-           <input class="is-checkradio"type="checkbox" name="ga_enabled" id="ga_enabled" onclick="Piler.toggle_ga();" <?php if($ga['ga_enabled'] == 1) { ?>checked="checked"<?php } ?> />
-        <label class="label" for="ga_enabled"><?php print $text_enable; ?></label>
+       <input class="is-checkradio is-medium"type="checkbox" name="ga_enabled" id="ga_enabled" onclick="Piler.toggle_ga();" <?php if($ga['ga_enabled'] == 1) { ?>checked="checked"<?php } ?> />
+        <label  for="ga_enabled"><?php print $text_enable; ?></label>
         
     </div>
      <div class="field">
-        <label class="label" for="ga_secret"><?php print $text_qr_code; ?></label>
-        <div id="QR" class="control">
+        <label  class="tag is-info" for="ga_secret"><?php print $text_qr_code; ?></label>
+        
+        <div id="QR" class="field">
        
            <?php print $ga['ga_secret']; ?> <br /><img src="qr.php?ts=<?php print time(); ?>" />
-
+           <a  href="#" onclick="Piler.new_qr(); return false;" class="button is-primary"> <?php print $text_refresh_qr_code; ?></a>
    
         </div>
 
     </div>
+    
     </div>
   
 
-        <footer class="card-footer">
-        <a class="card-footer-item button is-primary is-medium" href="#" onclick="Piler.new_qr(); return false;"> <?php print $text_refresh_qr_code; ?></a>
-        </footer>
+        
+        
+        
    </div>
 
 

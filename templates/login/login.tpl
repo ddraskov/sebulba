@@ -37,12 +37,14 @@
         <div class="container has-text-centered">
                
     <div id="logincontainer" class="container">
-            <div class="column is-4 is-offset-4"><div class="box">
+            <div class="column is-4 is-offset-4">
+                <div class="box">
+                        <h3 class="title has-text-grey"><?php print $text_login; ?></h3>
         <div id="logo-lg"><img src="<?php print SITE_URL; ?><?php print SITE_LOGO_LG; ?>" alt="Archive Logo Image" title="Login" /></div>
         
         <form name="login" action="login.php" method="post" class="form-signin">
 
-            <h2 class="form-signin-heading"><?php print $text_login; ?></h2>
+  
             
             
             <?php if(isset($x)){ ?><div class="notification is-warning"><button class="delete"></button><p class="">
@@ -63,7 +65,7 @@
             <input type="text" class="input-block-level" name="captcha" placeholder="CAPTCHA" />
         <?php } ?>
 
-            <button class="button is-primary is-medium" type="submit" value="<?php print $text_submit; ?>"><?php print $text_submit; ?></button>
+            <button class="button is-block is-large is-primary is-fullwidth" type="submit" value="<?php print $text_submit; ?>"><?php print $text_submit; ?></button>
 
         </form>
         </div>

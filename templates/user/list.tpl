@@ -25,69 +25,46 @@
       
         
       <div class="container">
-          <div class="columns">
-    <div class="column is-6">
-          <div class="card">
-           
-              <header class="card-header">
-                <p class="card-header-title">
-                  User 
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </a>
-              </header>
-              <div class="card-content">
-                <div class="content ">
-                    <form method="post" name="search1" action="index.php?route=user/list">
-                      <div class="field has-addons ">
-                    
-                        <div class="control has-icons-left">
-                            <input type="text" name="search" class="input is-medium " value="<?php print $search; ?>" />
-                            <span class="icon is-medium is-left">
-                                <i class="fa fa-search"></i>
-                              </span>
-                          </div>  
-                          <div class="control">
-                            <input type="submit" class="button is-primary is-medium " value="<?php print $text_search; ?>" />
-                        </div> 
-                       </div>
-                    </form>
-   
-             </div> 
-            
-    </div>
-</div> 
-</div>
+<!-- Main container -->
+<nav class="level">
+    <!-- Left side -->
+    <div class="level-left">
 
-<div class="column is-6">
-<div class="card">
-    <header class="card-header">
-      <p class="card-header-title">
-        Add new user
-      </p>
-      <a href="#" class="card-header-icon" aria-label="more options">
-        <span class="icon">
-          <i class="fas fa-plus-circle" aria-hidden="true"></i>
-        </span>
-      </a>
-    </header>
-    <div class="card-content">
-      <div class="content">
-        <div class="control has-icons-left ">
-            <a class="button is-medium is-primary" href="index.php?route=user/add"><i class=""></i>&nbsp;<?php print $text_add_new_user_alias; ?></a>
-            <span class="icon">
-                <i class="fas fa-plus-circle" aria-hidden="true"></i>
-              </span>
-        </div>
+      <div class="level-item">
+          <form method="post" name="search1" action="index.php?route=user/list">
+            <div class="field has-addons ">
+          
+              <div class="control has-icons-left">
+                  <input type="text" name="search" class="input is-medium " value="<?php print $search; ?>" />
+                  <span class="icon is-medium is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                </div>  
+                <div class="control">
+                  <input type="submit" class="button is-primary is-medium " value="<?php print $text_search; ?>" />
+              </div> 
+             </div>
+          </form>
+
       </div>
     </div>
-  </div>
-</div>
-</div>
-<!--  ########################## End CARDS ############################################ -->
+  
+    <!-- Right side -->
+    <div class="level-right">
+        
+           
+            <a class="button is-primary is-medium is-outlined" href="index.php?route=user/add">
+                <span><?php print $text_add_new_user_alias; ?></span>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-plus-circle"></i>
+                </span>
+              </a>
+ 
+            
+       
+    </div>
+  </nav>
+
 
 <div class="columns">
     <div class="column is-fullwidth">
@@ -153,7 +130,12 @@
             ?>
          </td>
          <td><a class="button is-small is-primary" href="index.php?route=user/edit&amp;uid=<?php print $user['uid']; ?>"><?php print $text_edit_or_view; ?></a></td>
-         <td><a class="modal-button button is-small is-danger " href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="modal-ter" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove; ?></a></td>
+         <td>  <a class="button is-danger is-outlined is-small" href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="modal-ter" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><span><?php print $text_remove; ?></span>
+            <span class="icon is-small">
+              <i class="fas fa-times"></i>
+            </span>
+          </a>
+           <!--a class="delete button is-danger" href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="modal-ter" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove; ?></a--></td>
       </tr>
     </tbody>
 <?php } ?>

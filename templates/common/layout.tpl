@@ -62,7 +62,8 @@ if(isset($this->request->get['route'])) {
 <div id="piler1" class="container">
 
 
-   <div id="main" class="container">
+   <div id="main" class="container ">
+     
 
    <section class="hero">
           <div class="hero-body">

@@ -1,6 +1,7 @@
 <section class="hero is-small">
     <div class="hero-body">
 <div class="container">
+   
 
   <div class="tag tag-info"><?php print $text_refresh_period; ?>: <?php print HEALTH_REFRESH; ?> sec</div>
   
