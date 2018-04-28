@@ -1,24 +1,36 @@
 
-<!-- ################# MODAL Confirmation #################### -->
-<div class="modal" id="deleteconfirm-modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
-        <button class="delete close-modal" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-          <p><?php print $text_user_delete_confirm_message; ?> <span id="name"><?php print $user['realname']; ?></span>?</p>
-      </section>
-      <footer class="modal-card-foot">
-          <a href="#" class="button close-modal" data-dismiss="modal" aria-hidden="true" ><?php print $text_close; ?></a>
-          <a href="index.php?route=user/remove&amp;uid=-1&amp;name=Error&amp;confirmed=0" class="button is-primary" id="id"><?php print $text_delete; ?></a>
 
-      </footer>
-    </div>
+<!-- ################# MODAL Confirmation #################### -->
+<div class="modal " id="deleteconfirmation">
+    <div class="modal-background"></div>
+      <div class="modal-content">
+      <div class="box">
+      <div class="media-content">
+        <div class="content">
+          <p><?php print $text_user_delete_confirm_message; ?> <span><strong><?php print $user['username']; ?></strong></span>?</p>
+        </div>
+       <nav class="level is-mobile">
+         <div class="level-left"> 
+          <a href="#" class="level-item button modal-close" aria-hidden="true" ><?php print $text_close; ?></a>
+          <a href="index.php?route=user/remove&amp;uid=-1&amp;name=Error&amp;confirmed=0" class="button level-item"><?php print $text_delete; ?></a>
+        
+        </div></nav>
+        </div>
+    
+    </div></div>  
   </div>
 
 <!-- ################# MODAL  #################### -->
+
+<div class="modal" id="deleteconf">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <!-- Any other Bulma elements you want -->
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+
 
 <section class="hero is-small">
     <div class="hero-body is-small">
@@ -129,13 +141,26 @@
                if($user['isadmin'] == 2){ print $text_user_auditor; }
             ?>
          </td>
-         <td><a class="button is-small is-primary" href="index.php?route=user/edit&amp;uid=<?php print $user['uid']; ?>"><?php print $text_edit_or_view; ?></a></td>
-         <td>  <a class="button is-danger is-outlined is-small" href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="modal-ter" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><span><?php print $text_remove; ?></span>
+         <td>
+           <a class="button is-small is-primary" href="index.php?route=user/edit&amp;uid=<?php print $user['uid']; ?>"><?php print $text_edit_or_view; ?></a></td>
+           <script>
+              var id= <?php print $user['uid']; ?>
+             
+             $("#showModal-"+id).click(function() {
+            $(".modal").addClass("is-active");  
+          });
+          
+          $(".modal-close").click(function() {
+             $(".modal").removeClass("is-active");
+          });
+             </script>
+         
+           <td>  <!--a class="button is-primary is-small modal-button" href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="deleteconfirmation" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><span><?php print $text_remove; ?></span>
             <span class="icon is-small">
               <i class="fas fa-times"></i>
             </span>
-          </a>
-           <!--a class="delete button is-danger" href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" data-target="modal-ter" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove; ?></a--></td>
+          </a-->
+          <a href="index.php?route=user/remove&amp;id=<?php print $user['uid']; ?>&amp;user=<?php print $user['username']; ?>" class="modal-button"  data-target="#deleteconf" data-id="<?php print $user['uid']; ?>" data-name="<?php print $user['realname']; ?>"><i class="icon-remove-sign"></i>&nbsp;<?php print $text_remove; ?></a></td>
       </tr>
     </tbody>
 <?php } ?>
@@ -164,23 +189,20 @@
 
 
 <?php } ?>
-
+<a class="button is-primary is-large modal-button" data-target="#deleteconf">Launch example modal</a>
 </section>
    </div>
    </div>
 
- <script>
-  document.querySelector('.modal-button').addEventListener('click', function(event) {
-  event.preventDefault();
-  var modal = document.querySelector('.modal');  // assuming you have only 1
-  var html = document.querySelector('html');
-  modal.classList.add('is-active');
-  html.classList.add('is-clipped');
+   <script>
+    $(".modal-button").click(function() {
+  var target = $(this).data("target");
+  $("html").addClass("is-clipped");
+  $(target).addClass("is-active");
+});
 
-  modal.querySelector('.close-modal').addEventListener('click', function(e) {
-    e.preventDefault();
-    modal.classList.remove('is-active');
-    html.classList.remove('is-clipped');
-  });
+$(".modal-close").click(function() {
+  $("html").removeClass("is-clipped");
+  $(this).parent().removeClass("is-active");
 });
    </script>

@@ -13,6 +13,9 @@
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
    <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma.css">
+   <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-radio-checkbox.css">
+   
+   
    
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -45,7 +48,7 @@
 
 </head>
 
-<body class="email">
+<body class="container email">
 
 <div id="wrapemail">
 

@@ -1,11 +1,15 @@
 <div id="restorebox" class="alert alert-general">
 <?php if(Registry::get('auditor_user') == 1 && count($rcpt) > 0) { ?>
 <?php foreach($rcpt as $r) { ?>
-      <input type="checkbox" class="restorebox" id="rcpt_<?php print $r; ?>" name="rcpt_<?php print $r; ?>" value="1" /> <?php print $r; ?><br />
+    <div class="control">
+            <div class="b-checkbox is-warning">
+      <input type="checkbox" class="styled" id="rcpt_<?php print $r; ?>" name="rcpt_<?php print $r; ?>" value="1" /> <?php print $r; ?><br />
+    </div>
+    </div>
 <?php } ?>
 <br />
-<input type="button" id="restore_button" name="restore_button" value="<?php print $text_restore; ?>" class="btn btn-primary" onclick="Piler.restore_message_for_recipients(<?php print $id; ?>, '<?php print $text_restored; ?>', '<?php print $text_select_recipients; ?>');" />
-<input type="button" value="<?php print $text_cancel; ?>" class="btn btn-inverse" onclick="$('#restorebox').hide();" />
+<input type="button" id="restore_button" name="restore_button" value="<?php print $text_restore; ?>" class="button is-primary" onclick="Piler.restore_message_for_recipients(<?php print $id; ?>, '<?php print $text_restored; ?>', '<?php print $text_select_recipients; ?>');" />
+<input type="button" value="<?php print $text_cancel; ?>" class="button is-outlined" onclick="$('#restorebox').hide();" />
 <?php } ?>
 
 </div>
@@ -43,7 +47,7 @@
 <div id="notesbox" class="input-prepend input-append">
    <span class="add-on"><i class="icon-file-alt icon-large"></i>&nbsp;<?php print $text_notes; ?>:</span>
    <input type="text" size="60" id="note" name="note" class="mynote" value="<?php print preg_replace("/\"/", "&quot;", $message['note']); ?>" />
-   <input type="button" class="btn btn-info" value="<?php print $text_save; ?>" class="message_button" onclick="Piler.add_note_to_message(<?php print $id; ?>, '<?php print $text_saved; ?>'); " />
+   <input type="button" class="button is-primary" value="<?php print $text_save; ?>" class="message_button" onclick="Piler.add_note_to_message(<?php print $id; ?>, '<?php print $text_saved; ?>'); " />
 </div>
 
 <?php if(ENABLE_FOLDER_RESTRICTIONS == 1) { ?>

@@ -10,7 +10,7 @@
   </head>
 
 <body>
-
+<div class="container is-fullwidth">
     <p style="font-weight: bold; font-size: 18px;"><?php print $text_search_expression; ?>: <?php print $search_expression; ?><br />
     <?php if($a['date1']) { print $text_date; ?>: <?php print $a['date1']; } ?></p>
  
@@ -63,6 +63,6 @@
                 <div class="alert alert-block alert-error lead"><i class="icon-exclamation-sign icon-2x pull-left"></i> <?php print $text_empty_search_result; ?></div>
     <?php } ?>
 
-
+  </div>
 </body>
 </html>

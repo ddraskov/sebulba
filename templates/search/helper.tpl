@@ -5,8 +5,9 @@
     <table id="results" class="table is-striped is-condensed is-narrow is-fullwidth">
       <thead>
         <tr>
-          <th id="restore-header"><input type="checkbox" id="bulkcheck" name="bulkcheck" value="1" <?php if(SEARCH_RESULT_CHECKBOX_CHECKED == 1) { ?>checked="checked"<?php } ?> class="is-checkradio" onclick="Piler.toggle_bulk_check('');" />
-            <label for="bulkcheck">All</label></th>
+          <th id="restore-header"><div class="b-checkbox is-primary">
+              <input type="checkbox" id="bulkcheck" name="bulkcheck" value="1" <?php if(SEARCH_RESULT_CHECKBOX_CHECKED == 1) { ?>checked="checked"<?php } ?> class="checkbox" onclick="Piler.toggle_bulk_check('');" />
+            <label for="bulkcheck">All</label></div></th>
           <th id="id-header">&nbsp;</th>
           <th id="date-header">
              <?php print $text_date; ?>
@@ -46,9 +47,9 @@
     <?php $i=0; foreach ($messages as $message) { ?>
             
          <tr onmouseover="Piler.current_message_id = <?php print $message['id']; ?>; return false;" id="e_<?php print $message['id']; ?>" class="resultrow new <?php if($message['deleted'] == 1) { ?>xxx<?php } ?>" onclick="Piler.view_message_by_pos(<?php print $i; ?>);">
-            <td id="c1_r<?php print $i; ?>" class="resultcell restore" onclick="Piler.stop_propagation(event);"><input type="checkbox" id="r_<?php print $message['id']; ?>" name="r_<?php print $message['id']; ?>" value="iiii" <?php if(SEARCH_RESULT_CHECKBOX_CHECKED == 1) { ?>checked="checked"<?php } ?> class="is-checkradio is-primary is-small" /><label class="is-small" for="r_<?php print $message['id']; ?>"></label></th></td>
-            <td id="c2_r<?php print $i; ?>" class="resultcell id"><?php print ($page*$page_len) + $i + 1; ?></td>
-            <td id="c3_r<?php print $i; ?>" class="resultcell date"><?php print $message['date']; ?></td>
+            <td id="c1_r<?php print $i; ?>" class="resultcell restore" onclick="Piler.stop_propagation(event);"><div class="b-checkbox is-primary is-small"><input type="checkbox" id="r_<?php print $message['id']; ?>" name="r_<?php print $message['id']; ?>" value="iiii" <?php if(SEARCH_RESULT_CHECKBOX_CHECKED == 1) { ?>checked="checked"<?php } ?> class="checkbox" /><label class="is-small" for="r_<?php print $message['id']; ?>"></label></div></th></td>
+            <td id="c2_r<?php print $i; ?>" class="resultcell has-text-grey-dark id"><?php print ($page*$page_len) + $i + 1; ?></td>
+            <td id="c3_r<?php print $i; ?>" class="resultcell date"><span class="tag is-primary has-text-3"><?php print $message['date']; ?></span></td>
             <td id="c4_r<?php print $i; ?>" class="resultcell from"><?php if($message['from'] != $message['shortfrom']) { ?><span title="<?php print $message['from']; ?>"><?php print $message['shortfrom']; ?></span><?php } else { print $message['from']; } ?></td>
             <td id="c5_r<?php print $i; ?>" class="resultcell to"><?php if($message['to'] != $message['shortto']) { ?><span title="<?php print $message['to']; ?>"><?php print $message['shortto']; ?>&nbsp;<span class="icon has-text-info"><i class=" fas fa-users"></i></span></span><?php } else { print $message['to']; } ?></td>
 

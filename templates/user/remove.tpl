@@ -1,4 +1,4 @@
-<div>
+<div class="modal is-active">
 
 <?php if($confirmed){ ?>
 

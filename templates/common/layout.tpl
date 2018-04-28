@@ -25,14 +25,18 @@
       <script src="/view/theme/default/assets/js/html5.js"></script>
     <![endif]-->
     
-    <script type="text/javascript" src="/view/javascript/jquery.min.js"></script>
-    <script type="text/javascript" src="/view/javascript/jquery-ui-custom.min.js"></script>
+    <!--script type="text/javascript" src="/view/javascript/jquery.min.js"></script-->
+
+    <!--script type="text/javascript" src="/view/javascript/jquery-ui-custom.min.js"></script>
     <script type="text/javascript" src="/view/javascript/jscolor.js"></script>
     <script type="text/javascript" src="/view/javascript/fileupload.js"></script>
     <script type="text/javascript" src="/view/javascript/rc-splitter.js"></script>
-    <script type="text/javascript" src="/view/theme/default/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/view/theme/sebulba/assets/js/modal.js"></script>
+    <script type="text/javascript" src="/view/theme/default/assets/js/bootstrap.js"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/view/javascript/piler.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    
     
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/view/theme/default/assets/ico/apple-touch-icon-144-precomposed.png">
@@ -42,7 +46,7 @@
     <?php if(BRANDING_FAVICON) { ?><link rel="shortcut icon" href="<?php print BRANDING_FAVICON; ?>" /><?php } ?>
 </head>
 
-<body <?php
+<body class="has-navbar-top" <?php
 
 
 if(isset($this->request->get['route'])) {

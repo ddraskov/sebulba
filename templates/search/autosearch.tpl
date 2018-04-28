@@ -7,7 +7,7 @@
     <p><?php print $text_delete_confirm_message; ?> <span id="name">ERROR</span>?</p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><?php print $text_close; ?></a>
+    <a href="#" class="button is-small is-warning" data-dismiss="modal" aria-hidden="true"><?php print $text_close; ?></a>
     <a href="index.php?route=search/autosearch&amp;remove=1&amp;id=-1&amp;&amp;confirmed=0" class="btn btn-primary" id="id"><?php print $text_delete; ?></a>
   </div>
 </div>
@@ -28,9 +28,9 @@
 
 <form method="post" name="add1" action="index.php?route=search/autosearch" class="form-horizontal">
 
-    <div class="control-group<?php if(isset($errors['mapped'])){ print " error"; } ?>">
-       <label class="control-label" for="mapped"><?php print $text_search; ?>:</label>
-       <div class="controls">
+    <div class="control <?php if(isset($errors['mapped'])){ print " error"; } ?>">
+       <label class="label" for="mapped"><?php print $text_search; ?>:</label>
+       <div class="control">
           <input type="text" class="text span6" name="query" placeholder="Search query"<?php if(isset($post['query'])){ echo " value='".$post['query']."'"; } ?> />
           <?php if ( isset($errors['query']) ) { ?><span class="help-inline"><?php print $errors['query']; ?></span><?php } ?>
        </div>
@@ -38,8 +38,8 @@
 
 
     <div class="form-actions">
-        <input type="submit" value="<?php print $text_add; ?>" class="btn btn-primary" />
-        <input type="reset" value="<?php print $text_clear; ?>" class="btn" />
+        <input type="submit" value="<?php print $text_add; ?>" class="button is-primary" />
+        <input type="reset" value="<?php print $text_clear; ?>" class="button" />
     </div>
 
 </form>

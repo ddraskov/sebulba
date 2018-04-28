@@ -1,4 +1,4 @@
-<div id="messagelistcontainer" class="container is-fluid" style="top:0">
+<div id="messagelistcontainer" class="container is-fluid">
 
    <div id="results">
          

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html class="has-navbar-fixed-top" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print DEFAULT_LANG; ?>" lang="<?php print DEFAULT_LANG; ?>">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print DEFAULT_LANG; ?>" lang="<?php print DEFAULT_LANG; ?>">
 
 <head>
    <title><?php print $title; ?></title>
@@ -14,7 +14,10 @@
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
    <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma.css">
+   <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-radio-checkbox.css">
+   <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-radio-checkbox.css">
    <link rel="stylesheet" href="/view/theme/sebulba/assets/css/bulma-extensions.min.css">
+  
    
 
   
@@ -42,9 +45,9 @@
     
 </head>
 
-<body onload="Piler.add_shortcuts();">
+<body class="has-navbar-fixed-top" onclick="Piler.add_shortcuts();">
 
-<div id="deleteconfirm-modal" class="modal hide fade">
+<div id="deleteconfirm-modal" class="modal ">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" role="dialog" aria-hidden="true"><i class="icon-remove"></i></button>
     <h3><?php print $text_forward_selected_emails_to; ?></h3>
@@ -67,7 +70,8 @@
     <div id="messagebox1" class="alert alert-info lead"></div>
 
     <div id="piler1" class="container is-fluid">
-     <div class="hero is-small" ></div>
+     <div class="hero is-small" >
+       
     <nav class="navbar is-transparent is-fullwidth">
 
     <div id="searchcontainer" class="navbar-menu">
@@ -86,20 +90,20 @@
             </span>
         </div>      
         <div class="control">
-            <button id="button_search" class="button is-primary is-medium" onclick="Piler.expert(this); return false;"><?php print $text_search; ?></button>
+            <button id="button_search" class="button is-primary is-medium"  onclick="Piler.expert(this); return false;"><?php print $text_search; ?></button>
         </div>
       </div>  
     
          </div>
        <div class="navbar-end">
          
-          <button id="button_expert" class="button is-danger is-medium" onclick="$('#searchpopup1').show();"><?php print $text_advanced_search; ?> &nbsp;<span class="caret"></span></button>
+          <button id="button_expert" class="button is-danger is-medium" onclick="$('#searchpopup1').addClass('is-active');"><?php print $text_advanced_search; ?> &nbsp;<span class="caret"></span></button>
       
          <div class="button is-notification is-medium navbar-item has-dropdown is-hoverable">
-            <div class="navbar-link is-medium">
+            <div class="navbar-link is-medium has-dropdown is-hoverable">
                 <?php print $text_options; ?>
             </div>
-            <div id="adminDropdown" class="navbar-dropdown ">  
+            <div id="adminDropdown" class="navbar-dropdown is-hoverable">  
                 <a class="navbar-item is-medium" href="#" onclick="Piler.saved_search_terms('<?php print $text_saved; ?>');"><?php print $text_save; ?></a>
                 <a class="navbar-item is-medium" href="#" onclick="Piler.load_saved_search_terms();"><?php print $text_load; ?></a>
              </div> </div>  
@@ -115,6 +119,8 @@
     </div>
 
     </nav>
+  </div>
+
     <?php print $popup; ?>
     <div id="mainscreen">
         <div id="mailleftcontainer">
@@ -122,10 +128,7 @@
         <div id="mailboxlist-container">
         <?php print $folder; ?>
         </div>
-        <script type="text/javascript">
-          var mailviewsplitv = new rcube_splitter({id:'splitter1', p1: 'mailleftcontainer', p2: 'mailrightcontainer', orientation: 'v', relative: true, start: 165});
-          split.add_onload('mailviewsplitv.init()');
-        </script>
+
         <?php } ?>
         </div>
         <div id="mailrightcontainer<?php if(ENABLE_FOLDER_RESTRICTIONS == 0) { ?>nofolder<?php } ?>">
@@ -133,17 +136,13 @@
             <div id="mailrightcontent">
               <div id="mailcontframe">
                 <div id="sspinner" class="alert alert-info lead"><i class="icon-spinner icon-spin icon-2x pull-left"></i><?php print $text_working; ?></div>
-                <div id="messagelistcontainer" class="boxlistcontent" style="top:0"> 
+                <div id="messagelistcontainer" class="boxlistcontent"> 
                 
                 <?php print $content; ?>
 
                 </div>
               </div>
 
-        <script type="text/javascript">
-          var mailviewsplit = new rcube_splitter({id:'splitter2', p1: 'mailcontframe', p2: 'mailpreviewframe', orientation: 'h', relative: true, start: 341});
-          split.add_onload('mailviewsplit.init()');
-        </script>
 
               <div id="mailpreviewframe"></div>
               
@@ -158,7 +157,9 @@
     });
     </script>
 
+
 <?php if(TRACKING_CODE) { print TRACKING_CODE; } ?>
+
 
 
 </body>
